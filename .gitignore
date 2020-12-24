@@ -46,3 +46,4 @@ client/plugin-module.js
 /iconfont
 package-lock.json
 yarn.lock
+static/prd*

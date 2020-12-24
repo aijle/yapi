@@ -202,6 +202,7 @@ module.exports = {
             new this.webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(zh-cn|en-gb)$/)
           );
         }
+        // console.log(JSON.stringify(baseConfig, null ,2))
         return baseConfig;
       }
     };
