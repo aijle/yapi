@@ -60,6 +60,9 @@ const columns = [
     key: 'default',
     width: 80,
     render: text => {
+      if (typeof text === 'object') {
+        return null
+      }
       return <div>{_.isBoolean(text) ? text + '' : text}</div>;
     }
   },
@@ -122,6 +125,7 @@ class SchemaTable extends Component {
     }
     let data = schemaTransformToTable(product);
     data = _.isArray(data) ? data : [];
+
     return <Table bordered size="small" pagination={false} dataSource={data} columns={columns} />;
   }
 }

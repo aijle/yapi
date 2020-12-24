@@ -22,8 +22,8 @@ function connect(callback) {
   let options = {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true};
 
   if (config.db.user) {
-    options.user = config.db.user;
-    options.pass = config.db.pass;
+    options.user = process.env.DBUSER || config.db.user;
+    options.pass = process.env.DBPWD || config.db.pass;
   }
 
   options = Object.assign({}, options, config.db.options)
@@ -33,7 +33,7 @@ function connect(callback) {
   if(config.db.connectString){
     connectString = config.db.connectString;
   }else{
-    connectString = `mongodb://${config.db.servername}:${config.db.port}/${config.db.DATABASE}`;
+    connectString = `mongodb://${process.env.DBHOST || config.db.servername}:${config.db.port}/${process.env.DBNAME || config.db.DATABASE}`;
     if (config.db.authSource) {
       connectString = connectString + `?authSource=${config.db.authSource}`;
     }
